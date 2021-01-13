@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on Yun Jie</title>
+    <link>https://yjlim1999.github.io/Portfolio/post/</link>
+    <description>Recent content in Projects on Yun Jie</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 02 Mar 2017 12:00:00 -0500</lastBuildDate><atom:link href="https://yjlim1999.github.io/Portfolio/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Online retail - Customer Segmentation</title>
+      <link>https://yjlim1999.github.io/Portfolio/post/project-3/</link>
+      <pubDate>Sat, 12 Dec 2020 11:13:32 -0400</pubDate>
+      
+      <guid>https://yjlim1999.github.io/Portfolio/post/project-3/</guid>
+      <description>Goal of Project The goal of this project is learn and perform customer segmentation on the online retail dataset, hopefully come up with important insights as to how the company can use this data to increase profits. In addition to that, understand the dataset and perform other analysis on the dataset along the way.
+About the dataset The dataframe contains 8 attributes:
+ Invoice: Invoice number. Nominal. A 6-digit integral number uniquely assigned to each transaction.</description>
+    </item>
+    
+    <item>
+      <title>Sentiment analysis in text.</title>
+      <link>https://yjlim1999.github.io/Portfolio/post/project-2/</link>
+      <pubDate>Sun, 01 Nov 2020 11:00:59 -0400</pubDate>
+      
+      <guid>https://yjlim1999.github.io/Portfolio/post/project-2/</guid>
+      <description>In this project, we carried out domain specific dataset analysis on multiple datasets as well as sentiment analysis on the iPhone reviews dataset.
+1. Domain Specific Dataset Analysis Process all the document links in excel file Dataset that is going to be used in general  Data Science is a field that uses various tools, processes, algorithms and machine learning principles to obtain knowledge and insights patterns from data. Streaming Services is a subscription-based service that offers online streaming of movies and television programs History of Singapore  In the tokenization process, we will perform tokenization for all the text in our dataset.</description>
+    </item>
+    
+    <item>
+      <title>Predicting GDP per capita</title>
+      <link>https://yjlim1999.github.io/Portfolio/post/project-1/</link>
+      <pubDate>Fri, 08 May 2020 10:58:08 -0400</pubDate>
+      
+      <guid>https://yjlim1999.github.io/Portfolio/post/project-1/</guid>
+      <description>Goal of Project The goal of this project is to understand the dataset, get some insights about it and finally train a model to predict GDP ($ per capita).
+About the dataset We will be using the Countries of the World dataset from kaggle. Please click on this link to access the dataset from kaggle.
+20 columns of dataset:
+ Country Region Population Area Pop. Density (per sq. mi.) Coastline (coast/area ratio) Net migration Infant mortality (per 1000 births) GDP ($ per capita) Literacy (%) Phones (per 1000) Arable (%) Crops (%) Other (%) Climate Birthrate Deathrate Agriculture Industry Service  Interesting EDA on dataset The below join plot graph not only shows the linear relationship between GDP per Capita, but it also shows the concentrations that countries belong in on the graph.</description>
+    </item>
+    
+  </channel>
+</rss>

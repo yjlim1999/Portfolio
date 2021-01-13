@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Online retail - Customer Segmentation | Yun Jie</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Understanding customer segmentation.">
+    <meta name="generator" content="Hugo 0.80.0" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="https://yjlim1999.github.io/Portfolio/dist/css/app.4fc0b62e4b82c997bb0041217cd6b979.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+
+    
+
+    
+    
+    <meta property="og:title" content="Online retail - Customer Segmentation" />
+<meta property="og:description" content="Understanding customer segmentation." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://yjlim1999.github.io/Portfolio/post/project-3/" />
+<meta property="article:published_time" content="2020-12-12T11:13:32-04:00" />
+<meta property="article:modified_time" content="2020-12-12T11:13:32-04:00" />
+<meta itemprop="name" content="Online retail - Customer Segmentation">
+<meta itemprop="description" content="Understanding customer segmentation.">
+<meta itemprop="datePublished" content="2020-12-12T11:13:32-04:00" />
+<meta itemprop="dateModified" content="2020-12-12T11:13:32-04:00" />
+<meta itemprop="wordCount" content="1846">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Online retail - Customer Segmentation"/>
+<meta name="twitter:description" content="Understanding customer segmentation."/>
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  
+  
+  <header class="cover bg-top" style="background-image: url('https://yjlim1999.github.io/Portfolio/images/retail.jpg');">
+    <div class="pb3-m pb6-l bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="https://yjlim1999.github.io/Portfolio/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        Yun Jie
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="https://yjlim1999.github.io/Portfolio/about/" title="About page">
+              About
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="https://yjlim1999.github.io/Portfolio/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="https://yjlim1999.github.io/Portfolio/post/" title="Projects page">
+              Projects
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+
+
+
+
+
+
+
+
+<a href="https://www.github.com/yjlim1999" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <h1 class="f2 f1-l fw2 white-90 mb0 lh-title">Online retail - Customer Segmentation</h1>
+          
+            <h2 class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+              Understanding customer segmentation.
+            </h2>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        PROJECTS
+      </aside>
+      
+
+
+
+
+  <div id="sharing" class="mt3">
+
+    
+    <a href="https://www.facebook.com/sharer.php?u=https://yjlim1999.github.io/Portfolio/post/project-3/" class="facebook no-underline" aria-label="share on Facebook">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.765,50.32h6.744V33.998h4.499l0.596-5.624h-5.095  l0.007-2.816c0-1.466,0.14-2.253,2.244-2.253h2.812V17.68h-4.5c-5.405,0-7.307,2.729-7.307,7.317v3.377h-3.369v5.625h3.369V50.32z   M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+
+    </a>
+
+    
+    
+    <a href="https://twitter.com/share?url=https://yjlim1999.github.io/Portfolio/post/project-3/&amp;text=Online%20retail%20-%20Customer%20Segmentation" class="twitter no-underline" aria-label="share on Twitter">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+    </a>
+
+    
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://yjlim1999.github.io/Portfolio/post/project-3/&amp;title=Online%20retail%20-%20Customer%20Segmentation" class="linkedin no-underline" aria-label="share on LinkedIn">
+      <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+    </a>
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Online retail - Customer Segmentation</h1>
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2020-12-12T11:13:32-04:00">December 12, 2020</time>
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><h2 id="goal-of-project"><strong>Goal of Project</strong></h2>
+<p>The goal of this project is learn and perform customer segmentation on the online retail dataset, hopefully come up with important insights as to how the company can use this data to increase profits. In addition to that, understand the dataset and perform other analysis on the dataset along the way.</p>
+<h2 id="about-the-dataset"><strong>About the dataset</strong></h2>
+<p>The dataframe contains 8 attributes:</p>
+<ul>
+<li>Invoice: Invoice number. Nominal. A 6-digit integral number uniquely assigned to each transaction. If this code starts with the letter &lsquo;c&rsquo;, it indicates a cancellation.</li>
+<li>StockCode: Product (item) code. Nominal. A 5-digit integral number uniquely assigned to each distinct product.</li>
+<li>Description: Product (item) name. Nominal.</li>
+<li>Quantity: The quantities of each product (item) per transaction. Numeric.</li>
+<li>InvoiceDate: Invice date and time. Numeric. The day and time when a transaction was generated.</li>
+<li>Price: Unit price. Numeric. Product price per unit in sterling (Â£).</li>
+<li>CustomerID: Customer number. Nominal. A 5-digit integral number uniquely assigned to each customer.</li>
+<li>Country: Country name. Nominal. The name of the country where a customer resides.</li>
+</ul>
+<h2 id="datacleaning"><strong>Datacleaning</strong></h2>
+<p>For this project, the data cleaning portion is quite interesting as I have not done data cleaning on an retail dataset before. Therefore, the approach that I used in data cleaning is quite different here than other projects that I have done.</p>
+<ol>
+<li>Checking for missing data</li>
+<li>Duplicate entries</li>
+<li><strong>Negative Values</strong></li>
+</ol>
+<p>Surprisingly, quantity has a negative number.</p>
+<p>Code:</p>
+<pre><code>negquantity = df[df['Quantity'] &lt; 0]
+negquantity.head(5)
+</code></pre>
+<p>Output:</p>
+<figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/table_1.png"/> 
+</figure>
+
+<p>We can observe that for negative quantity numbers, the invoice number contains the letter &ldquo;C&rdquo;, which indicates a cancellation. Let&rsquo;s take alook closely at the cancelled  orders</p>
+<ol start="4">
+<li>
+<p><strong>Cancelled Orders</strong></p>
+<pre><code> Number of orders cancelled: 18390/797885 (2.30%)
+</code></pre>
+</li>
+</ol>
+<p>As you can see from the table above, we can see that the cancellations are made by the same person (Customer ID: C489449). I decide to see whether there are orders bought before from this customer with matching order details with exception of invoice number and invoiceDate. However, I realised that the previous orders for this particular customer may not be present in the dataset as the cancellation is made on 2009-12-01 which means that the order is most likely to be bought previously on a date earlier but the dataset only starts at 2009-12-01. The hypothesis proves to be the correct as the previous order is not found.</p>
+<p>Despite this, we can still verify the cancellations that are made later than 2009-12-01. I looked at the 200th-240th wrong matching entries. The stock codes for the wrong matching are quite unexpected. Most of the StockCodes are expected(contains all numbers) but some of the stockCodes contains alphabets e.g. A, B, C, D, E, G, L, J, P, S, W which are located at the end of the StockCode. Upon closer inspection at the description, the alphabets are related to the product. For example, if you look at 233th-240th mismatch invoices, they all contain alphabets at the end of their stockCode and the alphabets in this case refers to the letters on the &ldquo;BLING KEY RING&rdquo;.</p>
+<pre><code>----------Does not match----------
+StockCode                         90214G
+Description    LETTER &quot;G&quot; BLING KEY RING
+Quantity                              -6
+InvoiceDate          2009-12-07 14:37:00
+Price                               1.25
+Customer ID                        14695
+Name: 15651, dtype: object
+----------Does not match----------
+StockCode                         90214P
+Description    LETTER &quot;P&quot; BLING KEY RING
+Quantity                              -6
+InvoiceDate          2009-12-07 14:37:00
+Price                               1.25
+Customer ID                        14695
+Name: 15652, dtype: object
+----------Does not match----------
+StockCode                         90214E
+Description    LETTER &quot;E&quot; BLING KEY RING
+Quantity                              -6
+InvoiceDate          2009-12-07 14:37:00
+Price                               1.25
+Customer ID                        14695
+Name: 15653, dtype: object
+----------Does not match----------
+StockCode                         90214J
+Description    LETTER &quot;J&quot; BLING KEY RING
+Quantity                              -6
+InvoiceDate          2009-12-07 14:37:00
+Price                               1.25
+Customer ID                        14695
+Name: 15654, dtype: object
+----------Does not match----------
+StockCode                         90214S
+Description    LETTER &quot;S&quot; BLING KEY RING
+Quantity                              -6
+InvoiceDate          2009-12-07 14:37:00
+Price                               1.25
+Customer ID                        14695
+Name: 15655, dtype: object
+----------Does not match----------
+StockCode                         90214C
+Description    LETTER &quot;C&quot; BLING KEY RING
+Quantity                              -6
+InvoiceDate          2009-12-07 14:37:00
+Price                               1.25
+Customer ID                        14695
+Name: 15656, dtype: object
+----------Does not match----------
+StockCode                         90214A
+Description    LETTER &quot;A&quot; BLING KEY RING
+Quantity                              -6
+InvoiceDate          2009-12-07 14:37:00
+Price                               1.25
+Customer ID                        14695
+Name: 15657, dtype: object
+----------Does not match----------
+StockCode                         90214L
+Description    LETTER &quot;L&quot; BLING KEY RING
+Quantity                              -6
+InvoiceDate          2009-12-07 14:37:00
+Price                               1.25
+Customer ID                        14695
+</code></pre>
+<p>To check that the cancellation is matched with a past order, i looked at specifically customer ID == 14695 where the stockCode ends with the letter &ldquo;L&rdquo;.</p>
+<p>Code:</p>
+<pre><code>df.loc[(df[&quot;Customer ID&quot;]==14695) &amp; (df[&quot;StockCode&quot;]==&quot;90214L&quot;) ]
+</code></pre>
+<p>Output:</p>
+<figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/table_2.png"/> 
+</figure>
+
+<p>As you can see, there is only one row that is outputted, which meant that the cancellation was not matched. We need to take into account this problem.</p>
+<ol start="5">
+<li>Discounted Orders
+Some of the negative quanity invoices are discounted. We can see this in the description == &ldquo;Discount&rdquo;.</li>
+</ol>
+<p>Code:</p>
+<pre><code>df_discount=df[df[&quot;Description&quot;]==&quot;Discount&quot;]
+df_discount[0]
+</code></pre>
+<p>Output:</p>
+<figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/table_3.png"/> 
+</figure>
+
+<ol start="6">
+<li><strong>Data cleaning for cancellation</strong></li>
+</ol>
+<p>Since some of the cancellations are not matched, we are going to do datacleaning specifically to only those that matched. It is also important to note that for some of the orders that are not matched, it is most likely due to the fact that the order is placed before 2009-12-01 which is the date that the dataset starts.</p>
+<p>To handle data cleaning, I will be having a function that checks for two cases:</p>
+<ol>
+<li>
+<p>a cancel order exists without counterpart</p>
+</li>
+<li>
+<p>there&rsquo;s at least one counterpart with the exact same quantity</p>
+<pre><code> entry_to_remove: 16168 (2.03%)
+ doubtful_entry: 1942 (0.24%)
+</code></pre>
+</li>
+</ol>
+<p>We will be dropping the cancellation orders with counterpart as it is justified. Since the doubtful entries (cancellation without counterpart) covers a small percentage (0.24%), we will also drop those entries too.</p>
+<ol start="7">
+<li>Removal of outliers</li>
+</ol>
+<p>We determine the cut-off for identifying outliers as more than 3 standard deviations from the mean.</p>
+<pre><code>entry_to_remove: 56 (0.01%)
+</code></pre>
+<h2 id="interesting-eda"><strong>Interesting EDA</strong></h2>
+<p>Below shows the top words that appear in the description.
+<img src="https://user-images.githubusercontent.com/42713212/103145619-851f4a00-4778-11eb-9cfd-c295082274d5.png" alt="newplot (2)"></p>
+<p>We are able to see that &ldquo;set&rdquo;, &ldquo;red&rdquo;, &ldquo;bag&rdquo;, &ldquo;heart&rdquo; and &ldquo;pink&rdquo; are the most common words that appear in the description. However, a better approach will be to look at the top words that appear for respective months since some months have special holidays that may alter the consumer&rsquo;s spending patterns. Below show the top words that appear in the description for each month.</p>
+<p><img src="https://user-images.githubusercontent.com/42713212/103147272-cd496700-478e-11eb-8905-eb43d1cae897.png" alt="image"></p>
+<p>As observed from the graphs, the top words changes as the months progressed. For example, in september, the word &ldquo;christmas&rdquo; suddenly appeared in the top 5 and rise to top 2 during october and november. It then dropped to 6th place in December. This is surprising as christmas is on the month of December and it contradicts the hypothesis that that sales for christmas related products will be the highest during the month. Therefore, the company can use this data to start promoting christmas related products in september since customers will start buying christmas products then.</p>
+<h2 id="customer-segmentation---insights-on-results"><strong>Customer Segmentation - Insights on results</strong></h2>
+<p>Customer Segmentation is done using the RFM principle. RFM stands for Recency, Frequency and Monetary value respectively.</p>
+<ul>
+<li>Recency(R): Days since last purchase</li>
+<li>Frequency(F): Total number of purchases</li>
+<li>Monetary value (M): Total money this customer spent</li>
+</ul>
+<p>RFM is a model based on customer segmentation and it helps to divide customers into various categories or clusters to identify customers who are more likely to respond to promotions and also for future personalization services.</p>
+<!-- raw HTML omitted -->
+<p>Here we will start segregating based on the percentile of the attribute. The attibutes are min_recency, frequency and monetary_value for 1. Recency, 2. Frequency and 3. Monetary value respectively. Based on the respective percentile, we will be allocating a score from 1 to 4. 1 would be the best score and 4 would be the worst.</p>
+<ul>
+<li>
+<p>For 1. Recency, the smaller the min_recency, the more recent the last purchase is, and hence it is better.</p>
+<pre><code>  -&gt; min_recency (0-25th:1, 26-50th:2, 51-75th:3, 76-100th:4 percentile)
+</code></pre>
+</li>
+<li>
+<p>For 2. Frequency and 3. Monetary value, the larger their respective attributes the better.</p>
+<pre><code>  -&gt; 0-25th:4, 26-50th:3, 51-75th:2, 76-100th percentile:1
+</code></pre>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<p><img src="https://user-images.githubusercontent.com/42713212/103103708-e7cff300-465d-11eb-8dd3-8c25e1a3c9fe.png" alt="image"></p>
+<p>Source: Blast Analytics Marketing</p>
+<p><img src="https://user-images.githubusercontent.com/42713212/103103505-780d3880-465c-11eb-9230-e4e71375c4ef.png" alt="image"></p>
+<p>It seems like the sales made by good customers is increasing from 2010 to 2011 comparatively across all months, which is a good sign. The most noticable would be the increase in sales would be 9/2011, 10/2011 and 11/2011 compared to 9/2010, 10/2010 and 11/2010. This trend is not present for all the other customer segments. Working with the marketing team would be useful in determining the reason for this improvement in sales and this info could be use to further increase sales made by good customers for the following years.</p>
+<p><img src="https://user-images.githubusercontent.com/42713212/103103526-94a97080-465c-11eb-9866-4d17cad7fdb0.png" alt="image"></p>
+<p>There seems to be a drop in average customer monthly sales from 2010 to 2011, especially in the decrease in sales for 10/2011 and 11/2011 when compared to 10/2010 and 11/2010.</p>
+<p><img src="https://user-images.githubusercontent.com/42713212/103103532-9d9a4200-465c-11eb-9708-1d27a57cfcc6.png" alt="image"></p>
+<p>The bad customer monthly sale dropped drastically at 12/2010. Since these are bad customers who are of low value, it may be a waste of resources for the marketing team to target the segment to increase in sales and it would be more efficient to target higher value customers.</p>
+<p><img src="https://user-images.githubusercontent.com/42713212/103103537-a559e680-465c-11eb-87d4-8f93e68ef383.png" alt="image"></p>
+<p>It seems like the sales made by best customers is increasing from 2010 to 2011 comparatively across all months, which is a good sign. The most noticable would be the increase in sales would be 9/2011, 10/2011 and 11/2011 compared to 9/2010, 10/2010 and 11/2010. This trend is not present for all the other customer segments. Working with the marketing team would be useful in determining the reason for this improvement in sales and this info could be use to further increase sales made by best customers for the following years. This is very important as these customers are of the highest value.</p>
+<p><img src="https://user-images.githubusercontent.com/42713212/103103541-ad198b00-465c-11eb-862e-c1306380ef61.png" alt="image"></p>
+<p>The loyal customer monthly sale dropped alittle from 2010 to 2011. It is most likely due to the poor marketing campaign targetted at the customer segment.</p>
+<p><img src="https://user-images.githubusercontent.com/42713212/103103550-ba367a00-465c-11eb-822b-8c70e3bbd43c.png" alt="image"></p>
+<p>It seems like the sales made by big spenders customers is increasing from 2010 to 2011 comparatively across all months, which is a good sign. The most noticable would be the increase in sales would be 9/2011, 10/2011 and 11/2011 compared to 9/2010, 10/2010 and 11/2010. This trend is not present for all the other customer segments. Working with the marketing team would be useful in determining the reason for this improvement in sales and this info could be use to further increase sales made by big spenders customers for the following years.</p>
+<p><img src="https://user-images.githubusercontent.com/42713212/103103557-c1f61e80-465c-11eb-835a-2afa47fc6532.png" alt="image"></p>
+<p>Similar to the bad customer graph, the number of sales for almost lost customers dropped sharply in 2011. These customers are valuable. This is because even though they have not purchase for some time, they purchase frequently and spends the most. Therefore, it is important to focus on increasing the number of sales back.</p>
+<p><img src="https://user-images.githubusercontent.com/42713212/103103562-ca4e5980-465c-11eb-8de3-01dc1cea2d19.png" alt="image"></p>
+<p>There is no data available for 2011 for this lost customer segment.</p>
+<p><img src="https://user-images.githubusercontent.com/42713212/103103582-e9e58200-465c-11eb-867f-0e164e0bae6e.png" alt="image"></p>
+<p>There is also no data available for 2011 for this lost cheap customer segment.</p>
+<h2 id="conclusion---practical-implementations"><strong>Conclusion - Practical Implementations</strong></h2>
+<p>Overall, based on the analysis made for the different customer segments, I think the company should focus on these 3 customer segments more:</p>
+<ol>
+<li>
+<p>loyal customers: the monthly sales did not increase but instead dropped alittle for some months. Since these customers buy the most frequently, the dropped in monthly sales would most likely stem from poor marketing targetted at the customer segment. Improving the quality and quantity of marketing would most likely lead to high rewards.</p>
+</li>
+<li>
+<p>Big spenders</p>
+</li>
+<li>
+<p>Almost lost customers</p>
+</li>
+</ol>
+<p><a href="https://github.com/yjlim1999/Online-Retail---Customer-Segmentation">Link to GitHub repository</a></p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://yjlim1999.github.io/Portfolio" >
+    &copy;  Yun Jie 2021 
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+<a href="https://www.github.com/yjlim1999" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="https://yjlim1999.github.io/Portfolio/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

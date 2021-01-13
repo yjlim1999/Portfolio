@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Sentiment analysis in text. | Yun Jie</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="A Natural Language Processing project.">
+    <meta name="generator" content="Hugo 0.80.0" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="https://yjlim1999.github.io/Portfolio/dist/css/app.4fc0b62e4b82c997bb0041217cd6b979.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+
+    
+
+    
+    
+    <meta property="og:title" content="Sentiment analysis in text." />
+<meta property="og:description" content="A Natural Language Processing project." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://yjlim1999.github.io/Portfolio/post/project-2/" />
+<meta property="article:published_time" content="2020-11-01T11:00:59-04:00" />
+<meta property="article:modified_time" content="2020-11-01T11:00:59-04:00" />
+<meta itemprop="name" content="Sentiment analysis in text.">
+<meta itemprop="description" content="A Natural Language Processing project.">
+<meta itemprop="datePublished" content="2020-11-01T11:00:59-04:00" />
+<meta itemprop="dateModified" content="2020-11-01T11:00:59-04:00" />
+<meta itemprop="wordCount" content="1322">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Sentiment analysis in text."/>
+<meta name="twitter:description" content="A Natural Language Processing project."/>
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  
+  
+  <header class="cover bg-top" style="background-image: url('https://yjlim1999.github.io/Portfolio/images/happy_shiba.jpg');">
+    <div class="pb3-m pb6-l bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="https://yjlim1999.github.io/Portfolio/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        Yun Jie
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="https://yjlim1999.github.io/Portfolio/about/" title="About page">
+              About
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="https://yjlim1999.github.io/Portfolio/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="https://yjlim1999.github.io/Portfolio/post/" title="Projects page">
+              Projects
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+
+
+
+
+
+
+
+
+<a href="https://www.github.com/yjlim1999" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <h1 class="f2 f1-l fw2 white-90 mb0 lh-title">Sentiment analysis in text.</h1>
+          
+            <h2 class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+              A Natural Language Processing project.
+            </h2>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        PROJECTS
+      </aside>
+      
+
+
+
+
+  <div id="sharing" class="mt3">
+
+    
+    <a href="https://www.facebook.com/sharer.php?u=https://yjlim1999.github.io/Portfolio/post/project-2/" class="facebook no-underline" aria-label="share on Facebook">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.765,50.32h6.744V33.998h4.499l0.596-5.624h-5.095  l0.007-2.816c0-1.466,0.14-2.253,2.244-2.253h2.812V17.68h-4.5c-5.405,0-7.307,2.729-7.307,7.317v3.377h-3.369v5.625h3.369V50.32z   M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+
+    </a>
+
+    
+    
+    <a href="https://twitter.com/share?url=https://yjlim1999.github.io/Portfolio/post/project-2/&amp;text=Sentiment%20analysis%20in%20text." class="twitter no-underline" aria-label="share on Twitter">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+    </a>
+
+    
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://yjlim1999.github.io/Portfolio/post/project-2/&amp;title=Sentiment%20analysis%20in%20text." class="linkedin no-underline" aria-label="share on LinkedIn">
+      <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+    </a>
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Sentiment analysis in text.</h1>
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2020-11-01T11:00:59-04:00">November 1, 2020</time>
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p>In this project, we carried out domain specific dataset analysis on multiple datasets as well as sentiment analysis on the iPhone reviews dataset.</p>
+<h2 id="1-domain-specific-dataset-analysis">1. Domain Specific Dataset Analysis</h2>
+<h3 id="process-all-the-document-links-in-excel-file">Process all the document links in excel file</h3>
+<h3 id="dataset-that-is-going-to-be-used-in-general">Dataset that is going to be used in general</h3>
+<ol>
+<li><strong>Data Science</strong> is a field that uses various tools, processes, algorithms and machine learning principles to obtain knowledge and insights patterns from data.</li>
+<li><strong>Streaming Services</strong> is a subscription-based service that offers online streaming of movies and television programs</li>
+<li><strong>History</strong> of Singapore</li>
+</ol>
+<p>In the tokenization process, we will perform tokenization for all the text in our dataset. Tokenization are important as text needs to be split into smaller units such as words, punctuation, numbers before any processing can be done.
+Table 1 shows that the tokenizer is unable to correctly recognized the domain specific tokens. The tokenizer performed tokenization by splitting the text based on word boundaries. The major drawback of this is the real-world object, such as a person name and organization will not classified as a single token. This can result in the token having different meaning then expected. An example from Table 1, the text “Acorn TV” is split into 2 tokens (Acorn and TV). However, the word “Acorn” by itself has a different meaning as compared to “Acorn TV”.</p>
+<table>
+<thead>
+<tr>
+<th>Domain</th>
+<th>Unexpected Tokens</th>
+<th>Expected Tokens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data Science</td>
+<td>' (' &lsquo;k−1&rsquo; &lsquo;) ' &lsquo;×&rsquo;  ' (&rsquo; &lsquo;k−2&rsquo;   &lsquo;) '</td>
+<td>' (k−1) ' &lsquo;×&rsquo; ' (k−2) '</td>
+</tr>
+<tr>
+<td>Streaming Services</td>
+<td>&lsquo;Acorn&rsquo; &lsquo;TV&rsquo;, &lsquo;Amazon&rsquo; &lsquo;Video&rsquo;</td>
+<td>&lsquo;Acorn TV&rsquo; - is an American subscription video streaming service  ,&lsquo;Amazon Video&rsquo; - is an American Internet video owned by Amazon</td>
+</tr>
+<tr>
+<td>History of Singapore</td>
+<td>&lsquo;M&rsquo; &lsquo;Veerasany,&lsquo;Nagajyothi&rsquo; &lsquo;Mahendran&rsquo;, &lsquo;Bak&rsquo; &lsquo;Kut&rsquo; &lsquo;Teh&rsquo;</td>
+<td>&lsquo;M Veerasamy&rsquo;, &lsquo;South India&rsquo;, &lsquo;Nagajyothi Mahendran&rsquo;, &lsquo;Bak Kut Teh&rsquo;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sentence-segmentation">Sentence segmentation</h3>
+<p>The library we used for to perform sentence segmentation will be sent_tokenize from NLTK.
+Figure 3 it shows that the distribution of the sentence length resembles a bell curve. The number of words in a sentence typically range around 15 to 25 words regardless of the topical domain. This suggest that when writing a sentences people tends to write around 20 words per sentences. This could be because longer sentences might be less readable while too many short sentences could create a clashing effect for the reader.
+Another important point to take note is there are sentences with around 100 words. This can be caused by sentences which does not have proper full stops.</p>
+<h2 id="2-development-of--noun-adj--pair-ranker">2. Development of &lt; Noun-Adj &gt; Pair Ranker</h2>
+<p>Data cleaning
+For data cleaning we looked at various ways to pre-process the text:</p>
+<ol>
+<li>Dealing with spelling errors</li>
+<li>Replacing words</li>
+<li>Lower-case</li>
+<li>Remove invalid symbols and numbers</li>
+<li>Word tokenization</li>
+<li>Stemming</li>
+</ol>
+<h3 id="dealing-with-spelling-errors">Dealing with spelling errors</h3>
+<p>We tried using TextBlob library, which is a popular Python library for processing textual data, to identify spelling errors and attempt spelling correction on these spelling errors.</p>
+<table>
+<thead>
+<tr>
+<th>Spelling errors identified</th>
+<th>Attempted spelling error correction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>costumer</td>
+<td>Costume (should be customer)</td>
+</tr>
+<tr>
+<td>poppin</td>
+<td>popping</td>
+</tr>
+<tr>
+<td>woohoo</td>
+<td>Woohoo</td>
+</tr>
+<tr>
+<td>wasn</td>
+<td>wasn t</td>
+</tr>
+<tr>
+<td>it&rsquo;s</td>
+<td>it&rsquo;s</td>
+</tr>
+<tr>
+<td>pretention</td>
+<td>Prevention (should be protection)</td>
+</tr>
+<tr>
+<td>iphone</td>
+<td>shone</td>
+</tr>
+<tr>
+<td>wifi</td>
+<td>iii</td>
+</tr>
+<tr>
+<td>syncing</td>
+<td>singing</td>
+</tr>
+<tr>
+<td>iphones</td>
+<td>iPhones</td>
+</tr>
+<tr>
+<td>doesn&rsquo;t</td>
+<td>doesn&rsquo;t</td>
+</tr>
+<tr>
+<td>isn&rsquo;t</td>
+<td>Isn&rsquo;t</td>
+</tr>
+<tr>
+<td>google</td>
+<td>goose</td>
+</tr>
+<tr>
+<td>we&rsquo;re</td>
+<td>we&rsquo;re</td>
+</tr>
+<tr>
+<td>nother</td>
+<td>a other (should be another)</td>
+</tr>
+<tr>
+<td>couldn</td>
+<td>couldn t</td>
+</tr>
+</tbody>
+</table>
+<p><em><strong>Observations and remarks</strong></em></p>
+<p>The .correct() function did a terrible job at identifying and correcting spelling mistakes. Only 7 out of the 17 words identified as spelling errors were actually spelling errors. Textblob incorrectly identified technical terms such as “google” and “wifi” as spelling errors. More importantly, it changes more correctly spelled terms into incorrectly spelling terms than the other way round which is not a good sign. For example, in the case of “google” and “wifi”, it “corrects” those terms to “goose” and “iii” respectively. Furthermore, it is also not able to correct the incorrectly spelled words. For example, the incorrectly spelled words “costumer” and “pretention” are corrected to “costume” and “prevention” instead of “customer” and “protection” respectively. In the end, it only corrected 4 words correctly. Due to the terrible result, we decided not to use the TextBlob library to deal with the spelling errors.</p>
+<h3 id="replacing-words">Replacing words</h3>
+<table>
+<thead>
+<tr>
+<th>Change</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lsquo;Smartphone&rsquo; -&gt; &lsquo;phone&rsquo;</td>
+<td>“Smartphone” word is found in review 12. In the review, smartphone refers to the iPhone itself.</td>
+</tr>
+<tr>
+<td>‘iPhone’ -&gt; ‘phone’</td>
+<td>We decided to convert the word iPhone into phone as phone in this case, is an umbrella term relating to the iPhone.</td>
+</tr>
+<tr>
+<td>‘ it ‘ -&gt; ‘phone’</td>
+<td>“It” word is found in review 1,2,3,5,8,13,24,26,27,28,30. Phone is described using the word “it” in this review.</td>
+</tr>
+<tr>
+<td>‘ it’s ‘ -&gt; ‘phone’</td>
+<td>“It’s” word is found in review 7,21,25. Phone is also described using the word “it’s” in this review.</td>
+</tr>
+<tr>
+<td>it&rsquo;s</td>
+<td>it&rsquo;s</td>
+</tr>
+<tr>
+<td>‘product’ -&gt; ‘phone’</td>
+<td>“product” word is found in review 1,13,24. Since the product that is sold to the reviewers is phone, so we changed the word product to phone.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="more-datacleaning">More datacleaning</h3>
+<h3 id="identifying-noun-adjective">Identifying noun-adjective</h3>
+<h3 id="rank-of--noun--adj--pairs-from-all-the-review-documents">Rank of &lt; Noun – Adj &gt; pairs from all the review documents</h3>
+<h2 id="3-application">3. Application</h2>
+<h3 id="textblob">TextBlob</h3>
+<p>We used TextBlob again to determine the sentiment of the reviews. TextBlob uses a sentiment lexicon, which consists of predefined words, to assign scores for each word. Using a weighted average, the scores are then averaged out to produce an overall sentence sentiment score. For each word, three scores: “polarity”, “subjectivity” and “intensity” are calculated. In this case, we will use the polarity attribute. The polarity attribute ranges from –1 to 1.</p>
+<table>
+<thead>
+<tr>
+<th>Polarity</th>
+<th>Sentiment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Polarity score &lt; -0.05</td>
+<td>Negative</td>
+</tr>
+<tr>
+<td>-0.05 &lt;= Polarity score &lt;=0.05</td>
+<td>Neutral</td>
+</tr>
+<tr>
+<td>Polarity score &gt; 0.05</td>
+<td>Positive</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vader">VADER</h3>
+<p>VADER stands for Valence Aware Dictionary and sEntiment Reasoner. It is a exicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media. VADER uses a combination of A sentiment lexicon is a list of lexical features (e.g., words) which are labelled according to their semantic orientation as either positive or negative.</p>
+<p>We iterate through the rows of reviews and used the polarity_scores() method to obtain the polarity indices for each sentence. This method will return four attributes of each sentence, namely “Positive”, “Neutral”, “Negative” and “Compound”. The positive, neutral and negative scores represent the proportion of text in the review that falls in these categories and since these 3 attributes are a proportion of text, they add up to 1 which is a 100 percent.</p>
+<p>The Compound score is a metric that calculates the sum of all the lexicon ratings which have been normalized between –1 (most extreme negative) and +1 (most extreme positive).</p>
+<table>
+<thead>
+<tr>
+<th>Compound</th>
+<th>Sentiment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compound score &lt; -0.05</td>
+<td>Negative</td>
+</tr>
+<tr>
+<td>-0.05 &lt;= Compound score &lt;=0.05</td>
+<td>Neutral</td>
+</tr>
+<tr>
+<td>Compound score &gt; 0.05</td>
+<td>Positive</td>
+</tr>
+</tbody>
+</table>
+<h3 id="comparison-between-textblob-and-vader">Comparison between TextBlob and VADER</h3>
+<p>Below shows the accuracy and macro-F1 score of both TextBlob and VADER:</p>
+<table>
+<thead>
+<tr>
+<th>Classifier</th>
+<th>Accuracy</th>
+<th>Macro-F1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TextBlob</td>
+<td>70%</td>
+<td>46%</td>
+</tr>
+<tr>
+<td>VADER</td>
+<td>74%</td>
+<td>55%</td>
+</tr>
+</tbody>
+</table>
+<p>VADER performs better than TextBlob in both accuracy and Macro-F1 score. This could stem from the fact that TextBlob is better suited for sentiments in social media texts which are informal whereas TextBlob is better suited for formal texts.</p>
+<p>VADER can detect slangs and uses factors such as punctuation and capitalisation in its determination of sentiments. This proved to be more effective in respective to the context of our dataset which is online reviews and hence largely informal and contain a complete mix of variety of text. In contrast, TextBlob is built upon NTLK and returns 0 if the sentence does not contain any polarity in the NTLK training set. Therefore, this may be the disadvantages for online reviews where there may be spelling errors and slangs that the TextBlob algorithm could not understand. The combination of these two factors resulted in VADER performing better than TextBlob.</p>
+<p>However, VADER also lacks in the fact that it only cares about individual words and completely ignores the context in which the word is used. For example, “the party was savage” will be negative when considered by any token-based algorithms. Therefore, even though VADER is better than TextBlob, it still not a very good way to determine sentiment in text due to this big limitation that it has.</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://yjlim1999.github.io/Portfolio" >
+    &copy;  Yun Jie 2021 
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+<a href="https://www.github.com/yjlim1999" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="https://yjlim1999.github.io/Portfolio/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>
