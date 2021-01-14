@@ -29,6 +29,16 @@ About the dataset The dataframe contains 8 attributes:
     </item>
     
     <item>
+      <title>Credit card fraud detection</title>
+      <link>https://yjlim1999.github.io/Portfolio/post/project-4/</link>
+      <pubDate>Wed, 14 Oct 2020 11:13:32 -0400</pubDate>
+      
+      <guid>https://yjlim1999.github.io/Portfolio/post/project-4/</guid>
+      <description>Abstract This report documented our approach in predicting fraud transactions for credit cards based on historical data. Our team have used the Credit Card Fraud Detection dataset from Kaggle. We conducted data analysis techniques to first understand and pre-process the given dataset, by attempting to understand the origin and context of the data and make possible assumptions to simplify our analysis when necessary.
+We applied feature engineering on the original dataset and derived two new features from the original dataset, Hour and lgAmount.</description>
+    </item>
+    
+    <item>
       <title>Predicting GDP per capita</title>
       <link>https://yjlim1999.github.io/Portfolio/post/project-1/</link>
       <pubDate>Fri, 08 May 2020 10:58:08 -0400</pubDate>

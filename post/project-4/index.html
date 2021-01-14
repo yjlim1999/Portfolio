@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Credit card fraud detection | Yun Jie</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Predicting credit card fraud.">
+    <meta name="generator" content="Hugo 0.80.0" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="https://yjlim1999.github.io/Portfolio/dist/css/app.4fc0b62e4b82c997bb0041217cd6b979.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+
+    
+
+    
+    
+    <meta property="og:title" content="Credit card fraud detection" />
+<meta property="og:description" content="Predicting credit card fraud." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://yjlim1999.github.io/Portfolio/post/project-4/" />
+<meta property="article:published_time" content="2020-10-14T11:13:32-04:00" />
+<meta property="article:modified_time" content="2020-10-14T11:13:32-04:00" />
+<meta itemprop="name" content="Credit card fraud detection">
+<meta itemprop="description" content="Predicting credit card fraud.">
+<meta itemprop="datePublished" content="2020-10-14T11:13:32-04:00" />
+<meta itemprop="dateModified" content="2020-10-14T11:13:32-04:00" />
+<meta itemprop="wordCount" content="8160">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Credit card fraud detection"/>
+<meta name="twitter:description" content="Predicting credit card fraud."/>
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  
+  
+  <header class="cover bg-top" style="background-image: url('https://yjlim1999.github.io/Portfolio/images/creditcard.jpeg');">
+    <div class="pb3-m pb6-l bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="https://yjlim1999.github.io/Portfolio/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        Yun Jie
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="https://yjlim1999.github.io/Portfolio/about/" title="About page">
+              About
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="https://yjlim1999.github.io/Portfolio/contact/" title="Contact page">
+              Contact
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="https://yjlim1999.github.io/Portfolio/post/" title="Projects page">
+              Projects
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+
+
+
+
+
+
+
+
+<a href="https://www.github.com/yjlim1999" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <h1 class="f2 f1-l fw2 white-90 mb0 lh-title">Credit card fraud detection</h1>
+          
+            <h2 class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+              Predicting credit card fraud.
+            </h2>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+        PROJECTS
+      </aside>
+      
+
+
+
+
+  <div id="sharing" class="mt3">
+
+    
+    <a href="https://www.facebook.com/sharer.php?u=https://yjlim1999.github.io/Portfolio/post/project-4/" class="facebook no-underline" aria-label="share on Facebook">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M28.765,50.32h6.744V33.998h4.499l0.596-5.624h-5.095  l0.007-2.816c0-1.466,0.14-2.253,2.244-2.253h2.812V17.68h-4.5c-5.405,0-7.307,2.729-7.307,7.317v3.377h-3.369v5.625h3.369V50.32z   M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;"/></svg>
+
+    </a>
+
+    
+    
+    <a href="https://twitter.com/share?url=https://yjlim1999.github.io/Portfolio/post/project-4/&amp;text=Credit%20card%20fraud%20detection" class="twitter no-underline" aria-label="share on Twitter">
+      <svg height="32px"  style="enable-background:new 0 0 67 67;" version="1.1" viewBox="0 0 67 67" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M37.167,22.283c-2.619,0.953-4.274,3.411-4.086,6.101  l0.063,1.038l-1.048-0.127c-3.813-0.487-7.145-2.139-9.974-4.915l-1.383-1.377l-0.356,1.017c-0.754,2.267-0.272,4.661,1.299,6.271  c0.838,0.89,0.649,1.017-0.796,0.487c-0.503-0.169-0.943-0.296-0.985-0.233c-0.146,0.149,0.356,2.076,0.754,2.839  c0.545,1.06,1.655,2.097,2.871,2.712l1.027,0.487l-1.215,0.021c-1.173,0-1.215,0.021-1.089,0.467  c0.419,1.377,2.074,2.839,3.918,3.475l1.299,0.444l-1.131,0.678c-1.676,0.976-3.646,1.526-5.616,1.568  C19.775,43.256,19,43.341,19,43.405c0,0.211,2.557,1.397,4.044,1.864c4.463,1.377,9.765,0.783,13.746-1.568  c2.829-1.673,5.657-5,6.978-8.221c0.713-1.716,1.425-4.851,1.425-6.354c0-0.975,0.063-1.102,1.236-2.267  c0.692-0.678,1.341-1.419,1.467-1.631c0.21-0.403,0.188-0.403-0.88-0.043c-1.781,0.636-2.033,0.551-1.152-0.402  c0.649-0.678,1.425-1.907,1.425-2.267c0-0.063-0.314,0.042-0.671,0.233c-0.377,0.212-1.215,0.53-1.844,0.72l-1.131,0.361l-1.027-0.7  c-0.566-0.381-1.361-0.805-1.781-0.932C39.766,21.902,38.131,21.944,37.167,22.283z M33,64C16.432,64,3,50.569,3,34S16.432,4,33,4  s30,13.431,30,30S49.568,64,33,64z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/></svg>
+
+    </a>
+
+    
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://yjlim1999.github.io/Portfolio/post/project-4/&amp;title=Credit%20card%20fraud%20detection" class="linkedin no-underline" aria-label="share on LinkedIn">
+      <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+    </a>
+  </div>
+
+
+      <h1 class="f1 athelas mt3 mb1">Credit card fraud detection</h1>
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2020-10-14T11:13:32-04:00">October 14, 2020</time>
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><h2 id="abstract"><strong>Abstract</strong></h2>
+<p>This report documented our approach in <strong>predicting fraud transactions for credit cards based on historical data</strong>. Our team have used the Credit Card Fraud Detection dataset from Kaggle. We conducted <strong>data analysis</strong> techniques to first understand and <strong>pre-process</strong> the given dataset, by attempting to understand the origin and context of the data and make possible assumptions to simplify our analysis when necessary.</p>
+<p>We applied <strong>feature engineering</strong> on the original dataset and derived two new features from the original dataset, Hour and lgAmount. We continued to use several <strong>machine learning algorithms</strong> to predict whether the transaction is fraudulent or not. The algorithms undertaken were Logistic Regression, Decision Tree, Random Forest, Linear Discriminant Analysis, K-Nearest-Neighbours Classifier, Extreme Gradient Boosting Machine and Multilayer Perceptron Feedforward Neural Network.</p>
+<p>We have prioritised the use of <strong>Area Under Precision-Recall Curve</strong> (AUPRC) as the metric for model performance due to the highly imbalanced dataset. We tried to <strong>optimize</strong> our <strong>model</strong> training through techniques such as feature selection and Grid Search.</p>
+<p>After several iterations of model optimization, we eventually compared various model performance and have found out that <strong>Random Forest</strong> performs the best across multiple datasets. Beyond the numeric comparison of model performance, we have also examined the various <strong>applications</strong> of this type of classification models used in real-life and analysed what other <strong>practical considerations</strong> that credit card companies might have when these models are deployed in a real-life situation.</p>
+<p>Lastly, we also looked at <strong>areas of improvement</strong> that could potentially overcome some of the limitations of our model. We recommend other forms of data, such as graph-based data, to be used in detecting fraud transactions, as it provides a different perspective of the credit card transactions and allows more innovative feature extraction from the large amount of data, as compared to the original numeric dataset.</p>
+<h2 id="problem-description"><strong>Problem description</strong></h2>
+<h3 id="motivation">Motivation</h3>
+<p>The credit card industry has become an indispensable part of our daily life. In Singapore, credit cards make up 60 percent of all transactions. There are 8 million credit cards circulating and 1.6 million credit card consumers in Singapore. This means that a credit card consumer in Singapore owns an average of 5 cards! This growing trend of the use of credit card in transactions mostly stems from the greater convenience and perceived belief that credit card usage is safer than cash.</p>
+<h3 id="problem-definition">Problem definition</h3>
+<p>According to the Nilson Report, the leading global card and mobile payments trade publication, credit card fraud losses worldwide reached $27.85 billion in 2018 and are projected to rise to $35.67 billion in five years and $40.63 billion in 10 years (The Nilson Report, 2019).</p>
+<p>Since machine learning models can learn from patterns of normal behaviour, they are very fast to adapt to it and can be used to identify patterns of fraud transactions. Therefore, it is intuitive to use machine learning as a means of tackling the problem of rising credit card fraud. The effectiveness or <strong>accuracy</strong> of the machine learning models can be determined by looking at the number of <strong>false positives</strong> and <strong>false negatives</strong>. In this specific context, false negatives refer to the number of fraudulent transactions misidentified as non-fraudulent and vice versa for false positives.</p>
+<p>On an economic and business perspective, having a greater number of false negatives is more severe because it has a larger and more severe impact on the profits of the bank. False negative means that credit card fraud was successful as it was undetected, resulting in an actual financial loss to the credit card user. This could have a direct impact on the reputation of the bank, as customers will perceive it as untrustworthy and this would overall lead to loss of customers and profits as customer switch over to other banks instead. False positive on the other hand, which is false alarm, has a smaller and indirect impact as the customer may feel embarrassed and annoyed about having their credit card transaction rejected but may continue to use the credit card.</p>
+<p>Overall, having both low numbers of false positives and negatives are important to attract and retain its existing customers. Therefore, we decided to look closely at false positive and negatives in forming our conclusion on the effectiveness of each machine learning model in detecting credit card fraud, and how these machine learning models can be used in real-life situations.</p>
+<h2 id="approach"><strong>Approach</strong></h2>
+<h3 id="methodology">Methodology</h3>
+<figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%201.png"/> 
+</figure>
+
+<h3 id="algorithms">Algorithms</h3>
+<p>Below are the algorithms used in data processing:</p>
+<figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%202.png"/> 
+</figure>
+
+<h2 id="implementations"><strong>Implementations</strong></h2>
+<h3 id="understanding-the-dataset">Understanding the dataset</h3>
+<p>The dataset contains transactions made by credit cards that occurred in two days during September 2013 by European cardholders. There is a total of 284,807 samples in the provided dataset. Each data sample represents a credit card transaction, consists of its features and showing whether the transaction is fraud or non-fraud.</p>
+<h4 id="input-features">Input features</h4>
+<p>For each of the 284,807 samples, there are a total of 30 input features which consists of features V1, V2, … V28 and &lsquo;Time&rsquo; and &lsquo;Amount&rsquo;. All the input features are numerical.
+Due to confidentiality issues, exact features cannot be provided and hence Principal Component Analysis (PCA) is used to extract important features out of the confidential data to output features V1, V2, … V28, which allows us to view the key essence of the data without violating confidentiality rules. Feature &lsquo;Time&rsquo; refers to the time, in seconds, between the respective transaction and the first transaction in the dataset. The feature &lsquo;Amount&rsquo; refers to the transaction Amount. This feature can be used for example-dependant cost-sensitive learning.</p>
+<h4 id="output-target">Output target</h4>
+<p>The output target refers to the target variable which is the result of considering the 30 input features. For our project of predicting whether a credit card transaction is fraud or non-fraud, the output target is labelled as “Class” as stated in the dataset (creditcard.csv). Feature &lsquo;Class&rsquo; is the output target variable. In the case of fraud, it has a value of 1 and has a value of 0 if the transaction is not fraud. In this dataset, there are only 492 frauds out of 284,807 transactions. Therefore, the dataset is highly unbalanced as the positive class (frauds) account for only 0.172% of all transactions.</p>
+<figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%203.png"/> 
+</figure>
+
+<h3 id="exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</h3>
+<p>In Exploratory Data Analysis, we would be first focusing on what are the fundamental quality of the data that is provided first. It is necessary for us to understand if the data provided to us has a lot of errors (e.g. missing data, duplicate data or invalid data that does not make sense), as this would give us a rough indication how reliable the data can be used for further analysis. And on top of that, some form of investigation on the data would allow us to give us more information on what we can clean the data up later, in the <strong>Data Cleaning</strong> part.</p>
+<p>After understanding the quality of data that is provided, we would try to visualize some of the features and variables that are provided and see if the data is provided would make sense in the context from the data source, and from there, it would give us some starting points on how we can further treat the data to extract more features or insights from it in <strong>Feature Engineering</strong>.</p>
+<h4 id="missing-data">Missing data</h4>
+<p>The dataset has no missing data.</p>
+<h4 id="invalid-data">Invalid data</h4>
+<p>There are ~1.8k of transactions with zero transactions value, and out of it, there are 27 fraudulent transactions labels.</p>
+<figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%204.png"/> 
+</figure>
+
+<p>There is a ~1k of duplicated rows, and within that, there are 17 of the duplicated rows, that has a fraudulent label.</p>
+<figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%205.png"/> 
+</figure>
+
+<h4 id="visualization-of-data">Visualization of data</h4>
+<h5 id="distribution-of-credit-card-amount">Distribution of credit card amount</h5>
+<p>The data set contains 284,807 transactions. The largest transaction recorded in this data set amounts to $25,691.16 and the mean amount of all transactions is $88.35.</p>
+<figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%206.png"/> 
+</figure>
+
+<p>Since the max amount is largely greater than the mean amount, we are able to predict that the distribution of the transaction amount is heavily right-skewed where the vast majority of transactions are relatively small and only a tiny fraction of transactions comes even close to the maximum. We then plotted a frequency distribution graph of the credit card transaction amount to prove if our predictions are true.</p>
+<figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%207.png"/> 
+</figure>
+
+<h5 id="distribution-of-credit-card-transaction-time">Distribution of credit card transaction time</h5>
+<p>The transaction time is the number of seconds that elapsed between that particular transaction and the first transaction in the dataset. Therefore, it can be derived that this data contains all transactions recorded over the course of two days. (1 day= 86400 seconds, 2 days = 172800 seconds).</p>
+<figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%208.png"/> 
+</figure>
+
+<p>From the graph, it can be seen that the distribution of the monetary value of the transactions is bimodal. It also shows that approximately 28 hours after the first transaction, there was a significant drop in the volume of transactions. While the time of the first transaction is not provided, it would be reasonable to assume that the drop in volume might have occur during the night, where one would expect less shopping takes place.</p>
+<h5 id="distribution-of-pca-variables">Distribution of PCA variables</h5>
+<p>Since we do not have the context of the PCA variables (and they would be normalized before PCA is ran) it would be quite difficult to garner more insights of those variables based on their magnitude or direction individually. However, there are other ways that we can try to retrieve information / infer the original variables by examining points are clustered across these PCA variables. In order to visualise the clustering on a 2D plane, we would need to make use of <strong>t-distributed Stochastic Neighbour Embedding (t-SNE)</strong> for the data visualisation.</p>
+<p>t-SNE takes a high dimensional data set and reduces it to a low dimensional graph that retains a lot of the original information. It does so by giving each data point a location in a two or three-dimensional map. This technique finds clusters in data thereby making sure that an embedding preserves the meaning in the data. t-SNE reduces dimensionality while trying to keep similar instances close and dissimilar instances apart. The benefit of t-SNE over PCA is that it is a non-linear method and can be used to find manifold structures which PCA is unable to do so, since PCA relies on linear projections.</p>
+<p>However, one main issue that we realise is that the dataset is essentially too big to use the whole dataset to run t-SNE. Thus, rather than using the whole dataset, what can be done instead is to for us to random sample about 1% of the whole dataset (Total: ~280k data points, 1% is 2.8k) instead, and plot smaller subsample. As such, even though it might not have a full reflection of all the data, but it could give us some representation of there is any form of clustering, within the PCA values themselves, and whether it can give us any additional insights. We tried using 10% or 5% of the dataset, but even then, there is too many data points to be plotted on to the same 2D to seek for any pattern and takes significantly long time to run.</p>
+<figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%209.png"/> 
+</figure>
+
+<p>As you can see from the t-SNE scatter plot above, there are some observations:</p>
+<ol>
+<li>The ratio of Fraudulent Transactions to Non-Fraudulent Transactions is too imbalanced, such that you can only see the two red points are clustered at the top right corner. And even if we repeat this subsampling many times, or with larger subsamples, the inference that we can obtain from clustering that affects the predictability of it being a fraudulent or non-fraudulent is likely to be very insignificant, due to the miniature size of fraudulent transactions.</li>
+<li>Even though, this might just be 1% of the whole dataset, it is still representative of some possible patterns that we might be able to see in the general population.</li>
+<li>From the scatter plot, it is quite clear that there might been some distinct clusters, although the cluster shape might not necessarily be globular. But this also indicates that between some of PCA variables, it is high likely that some of the variables are highly correlated. Thus, it is essential to do feature selection to omit some of the redundant PCA features in later stages.</li>
+</ol>
+<h3 id="data-preprocessing-and-feature-engineering">Data Preprocessing and Feature Engineering</h3>
+<p>After doing EDA, we have some basic information on the quality of the dataset that is provided, and the issues that needs to be dealt with (e.g. invalid data and duplicate data). The visualization on some of the variables also provided us on ideas on how we can try to treat those variables, and possibly extract new features from those data.</p>
+<p>We would undergo a series of steps to clean the data, then do some feature engineering, and have an overall view on the post-processed data, as well as the interactions and correlations between the original variables and possibly the new features. After that, we start processing the data through train-test split for training data to be ready to be used as inputs into model, and use test data for performance scoring, which is completely unseen by the models.</p>
+<pre><code>1.	Data Cleaning
+    a.	Invalid data
+    b.	Duplicate data
+    c.	Removal of Outliers
+2.	Feature Engineering
+    a.	Transaction Time – Hour
+    b.	Transaction Amount - lgAmount
+3.	Feature Correlation Matrix
+4.	Train-test Split
+5.	Sampling of Training data
+    a.	Oversampling – SMOTE
+    b.	Undersampling - NearMiss
+    c.	Both (Under and oversampling) - SMOTE and Edited Nearest Neighbours
+6.	Normalizing Training data
+</code></pre>
+<h4 id="data-cleaning">Data Cleaning</h4>
+<h5 id="invalid-data-1">Invalid data</h5>
+<p>There are transaction amounts with zero values, which does not make sense in this context, as then there would not be a need for such transactions if the transaction value is zero. It might also be hard to tell if these values are due to technical errors or it can be that these are transactions that did not went through. However, there is no quick rules to determine the background of this invalid values, and what are the actual causes of these invalid records. Thus, the simplest treatment for such records is to just remove them.</p>
+<h5 id="duplicate-data">Duplicate data</h5>
+<p>The way of handling duplicate data is rather tricky here. It is hard to determine whether the duplicates are due to a technical fault, or the duplicates might be intentional. And due to the context of the domain, most of the columns are PCA values, so we do not have more contextual information to determine if there is any relevance in counting the frequency of the duplicated data.</p>
+<p>A possible theory of the duplicate data might be of multiple submissions of the same transaction (just that some of them were rejected) submitted consecutively within the same span of time. However, we can try to disprove the theory that it might be an issue of multiple transaction submissions, submitted within the same second. Since there is a column of Time, which is the Number of seconds elapsed between this transaction and the first transaction in the dataset., and the values are in the form of an integer (no decimal values), we can check if there any other transactions (after excluding the Time column) would have duplicate submissions.</p>
+<p><strong>If the number of duplicate rows is different from the original number of duplicate rows (including Time column), then the theory that a transaction can be submitted multiple times within a short time span, resulting in duplicate rows, is likely to be correct.</strong></p>
+<pre><code>Number of duplicated rows [After removing Time]: 1064
+Number of duplicated rows [Before removing Time]: 1064
+</code></pre>
+<p>Since the number of rows with duplicates are the same, we can safely conclude that the theory of multiple submissions of the same transaction is not possible for this dataset, and it might be safe to assume that the duplicate data might be a technical fault, and we should only keep the first entry of each unique duplicated row.</p>
+<pre><code>Number of duplicated rows removed: 2889
+
+Number of non-fraudulent transactions: 281470
+Number of fraudulent transactions: 448
+
+[Original] Percentage of fraudulent transactions:  0.17%
+[New] Percentage of fraudulent transactions:  0.16%
+</code></pre>
+<p>Proportion of fraudulent transactions (after removing those invalid data) remains relatively same.</p>
+<h5 id="removal-of-outliers">Removal of outliers</h5>
+<p>Removal of outliers is a rather tricky and complicated step, as it involves two parts:</p>
+<ol>
+<li>identifying the points that should be classified as outliers.</li>
+<li>deciding on what treatment should be done on the outliers.
+Based on the context of fraudulent detection, outliers are in fact more important than a regular machine learning that tries to generalize a common pattern. As fraudulent transactions tend to be rarer as compared to non-transactions, it actually makes more sense to preserve a fraudulent transaction that is classified as an outlier, than to remove it, especially with the highly imbalanced dataset.</li>
+</ol>
+<p>For step (1) identifying the points that should be classified as outliers, the most common way of identifying an outlier is plot a boxplot for that variable, and along with the meaning and context of the attribute, we are able to determine if that point is reasonable or not.</p>
+<h6 id="time"><strong>Time</strong></h6>
+<p>First, we look at the Time variable. Since it is not a PCA value and know the context that it is time lapsed from the first transaction in the whole record, we probably do not need to remove any values from it since there is no relevance for us to do it. Probably a better error checking would be checking if there are any invalid values (negative values) in the variable.</p>
+<figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2010.png"/> 
+</figure>
+
+<pre><code>Number of records with negative time values: 0
+</code></pre>
+<h6 id="amount"><strong>Amount</strong></h6>
+<p>Second, we look at the Amount variable. Since it is not a PCA value, we can obtain the context from the dataset. It is dollar amount of the transaction that is involved. We will plot a simple boxplot to check for any excessively amount of dollars in any of the transactions. Similar to Time, we would also be checking if there are any invalid values (negative values) in the variable.</p>
+<p>As you can see there are quite a few records, which transaction amount is &gt; 15k in value dollars. We might want to take a deeper look at those rows.</p>
+<figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2011.png"/> 
+</figure>
+
+<pre><code>Number of records with negative amount values: 0
+</code></pre>
+<p>Interestingly, those are all non-fraudulent. Hence, this might indicate to us that fraudulent acts might not target large transaction amount, as it might be too conspicuous and get caught easily. And keeping these 3 transactions here might provide some training data for the model for this possible insight. Thus, we would not be removing these 3 non-fraudulent transactions.</p>
+<figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2012.png"/> 
+</figure>
+
+<h6 id="pca-values"><strong>PCA values</strong></h6>
+<p>These variables are PCA values. As such, it is hard to determine what are the causes that led up to these outliers, and we are unsure what would constitute to an outlier, since we do not have the context of each of the variable (for those PCA values). Hence, in order to remove the outliers for PCA values, we need to determine the arbitrary acceptable range ourselves based on the visualization of each PCA value. Then we try to remove points that are out of the range. However, we decided to remove only outliers of non-fraudulent transactions and keep those that are of fraudulent transactions. This is because outliers of fraudulent transactions may also provide key insights in identifying fraudulent transactions.</p>
+<p>Steps taken for data cleaning of PCA values:</p>
+<ol>
+<li>Visualization of how the range of the data might be</li>
+<li>Decide what would be a suitable range for data to acceptable, and data that are far away from the range [A quick and easy way to determine the range/ or determine the outliers is to
+(1) calculate the distance from median for each point
+(2) run K means clustering on the distance from median for each point, with k = 2]</li>
+<li>Check for those records that are out of the range if they are fraudulent or non-fraudulent</li>
+<li>Keep those records that are fraudulent, even though they might be outliers</li>
+<li>Remove those records that are non-fraudulent and are out of the range</li>
+<li>Set a certain percentage threshold of how much data we would want to remove, since we do not have the context of the PCA values, we do not have confidence that removal of the outliers could be the right thing to do. For us, we feel that removing up to 3k of the non-fraudulent data points (1% of the whole dataset) is alright.</li>
+</ol>
+<p>First, we try to have a boxplot of each PCA value to have some rough gauge on what are the values that you want to remove, as an outlier, and what would be the acceptable range.</p>
+<p><figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2013.png"/> 
+</figure>
+  <figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2014.png"/> 
+</figure>
+</p>
+<p>From the boxplots, we can see that each PCA feature has its own acceptable range. Therefore, we decide to set individualised ranges for each feature. The outliers to remove from each column seems to be those extremes ones. We then ran the algorithm mentioned above and removed about 1% of the non-fraudulent data points that we determined as outliers.</p>
+<pre><code>Total number of extreme outliers removed: 3542
+</code></pre>
+<h4 id="feature-engineering">Feature Engineering</h4>
+<p>Based on the visualization that we have made earlier during EDA, we have concluded the use of PCA values for feature engineering tends to be very limited due to the lack of the context of the PCA values and the imbalanced class ratio only makes it harder for us to use clustering to help us predict the fraudulent transactions better. Thus, other than the PCA values, we can also look at two other variables that we have some context knowledge of it, namely transaction time and transaction amount. Based on these two attributes, we can look for new ways to treat these variables, or possibly extract features from them.</p>
+<h5 id="transaction-time---hour">Transaction Time - Hour</h5>
+<p>Based on the feature “Time”, we summarized it and created a new feature “Hour” which sums the total number of fraudulent and non-fraudulent transactions respectively that takes place in the particular hour of the day. We first plotted the number of Frauds vs Non-frauds over the 24hour time period on a histogram. However, since there are so little fraud cases, we can barely see them on this graph.</p>
+<figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2015.png"/> 
+</figure>
+
+<p>Therefore, we used normalisation to be able to see the distribution of the fraud cases better and compare the distribution with that of non-fraud cases.</p>
+<figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2016.png"/> 
+</figure>
+
+<p>As you can see the histogram above that the fraudulent transactions tend to be higher at certain hours of the day (3rd hour &amp; 12th hour) whereas non-fraudulent transactions are kind of even throughout the day, except for the low periods (probably when the buyers are inactive/sleeping). Although we might not be certain the 3rd hour &amp; 12th hour is exactly which hours of the day, since the data is based on an offset from the first transaction in the data set, this histogram provides some indication that by looking at which hour of the day the transaction takes place, we are more likely to know whether it is a fraudulent or non-fraudulent transaction. Thus, we might be able to include Hour as a new feature to help classify fraudulent / non-fraudulent transactions.</p>
+<h5 id="transaction-amount---lgamount">Transaction Amount - lgAmount</h5>
+<p>The distribution of Amount does not provide much insight visually in EDA. However, one of the inherent feature engineering that can done on currency values is to run a logarithms function over them, especially when the range of the values is large and values tend to cluster in a smaller subrange. Logarithms function scales the value in a way that the significance in difference between two nearby values are determined on the magnitude of the scale of the value. It considers the percentage difference rather than the absolute difference between values.</p>
+<p>For example, there are 4 values, A1 = 10, A2 = 11, B1 = 1000, B2 = 1001. Although A1 and A2 differ in same magnitude as B1 and B2 (A2 - A1 = B2 - B1), the significance in difference is more important in A1 and A2 as compared to B1 and B2. As the percentage difference between A1 and A2 is 10%, whereas the percentage difference between B1 and B2 is only 0.1%. Therefore, by running a logarithmic function over A1, A2, B1 and B2, the difference between A1 and A2 become more distinct as compared to difference between B1 and B2.</p>
+<pre><code>log10(A2) - log10(A1) = 0.041392685
+log10(B2) - log10(B1) = 0.000434077
+</code></pre>
+<p>Thus, by running a logarithmic function over it, you are taking account the percentage difference between values, rather than the absolute difference in values.</p>
+<figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2017.png"/> 
+</figure>
+
+<p><figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2018.png"/> 
+</figure>
+ <figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2019.png"/> 
+</figure>
+</p>
+<p>After the logarithm function, the distribution now follows much closer to a Gaussian/Normal distribution, however one issue would be the negative values in lg(Amount). This is because some of the values in Amount is within the range of 0 and 1 (0 &lt; x &lt; 1), thus resulting in a negative log value. Quick way to fix this is to add 1 to all the transaction amounts, such that lg(Amount) is non-negative.</p>
+<figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2020.png"/> 
+</figure>
+
+<p>To ensure accuracy in the model’s result, we are going to have 2 separate datasets, one with the added feature lgAmount and another without. Then an additional thing that we need to consider is to determine if we need to remove Amount variable when we include in lgAmount, since lgAmount is a derived variable from Amount, thus it might be likely that they are highly correlated. This decision will be decided in the next section when Feature Correlation Matrix is plotted. However, we will have 2 separate datasets (one with lgAmount, another without lgAmount) in the end to determine whether including lgAmount as a feature is indeed beneficial.</p>
+<p><figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2021.png"/> 
+</figure>
+<figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2022.png"/> 
+</figure>
+</p>
+<p>Based on this correlation matrix:</p>
+<ol>
+<li>We can see that most of the PCA values are highly uncorrelated, which is a trivial insight (since PCA variables are mostly eigenvectors).</li>
+<li>There are quite a number of PCA variables that are highly uncorrelated with the Class (V19-V28), which possibly mean that quite a number of variables used to predict the Class might not be necessarily. Thus, we might have to consider doing feature selection or further dimension reduction for our models later, during model building.</li>
+<li>Amount is significantly correlated to some of the PCA variables (V1-V10), which we can probably infer that these PCA variables probably have some information on the purchasing power of the user, thus affecting the transaction amount. Though it might be true, there is no way we can prove it merely using this data set.</li>
+<li>Time has significant correlations with some of the PCA variables. Same as point 3, even though we can infer it based on the correlation matrix above, but there is not enough evidence or information given based on the context of the PCA values to make such assumption to help us further.</li>
+<li>Time and Hour are not as correlated as you would expect, since Hour is derived from Time, it is expected for them to be highly correlated. The only difference between Hour and Time is that two records that differ by 3600 seconds (24 hours) would have the same Hour value, but different Time value. Given that their correlation is only 0.3 &lt; 0.5, it might be wise to include both Time and Hour in the features to be used for prediction, since these two variables might provide different significant value-add.</li>
+<li>Whereas Amount and lgAmount are significantly correlated at 0.55 &gt; 0.5, as such it might be wise to pick either Amount or lgAmount as the feature, since lgAmount is derived from Amount. Thus, for the dataset where we include lgAmount, we need to remove Amount in that dataset, but we will have two datasets (Amount &amp; lgAmount)</li>
+</ol>
+<h4 id="train-test-split">Train-test split</h4>
+<p>To prepare our models for the prediction, we first split the provided training dataset into training data and testing data in the ratio of 80:20.</p>
+<p>The train-test split needs to be stratified since the original dataset is heavily imbalanced. After which, we would obtain the training and testing data. The testing data will be kept intact and will only be used for validation/testing for the performance of the models on unseen data.</p>
+<h4 id="sampling-of-training-data">Sampling of Training data</h4>
+<p>Since the dataset is highly imbalanced, the training data will be then resampled using three methods: under sampling, oversampling and a combination of both, to obtain a training dataset with relatively balanced class.</p>
+<p>Since previously, we also mentioned in the Feature Correlation Matrix, due to the significant correlation between Amount and lg(Amount), it is optimal to only include one of them in the model building at any one time. We would be creating a dataset with Amount, and another with lg(Amount), after which, we will still run the sampling methods on these two datasets.</p>
+<h5 id="oversampling---smote">Oversampling - SMOTE</h5>
+<p>In oversampling, we are increasing the number of samples of fraud transactions to match the number of samples of non-fraud transactions. We decide to use Synthetic Minority Oversampling Technique (SMOTE) instead of random over sampling due to the advantages of SMOTE.</p>
+<p>In random oversampling, training data is created by supplementing the training data with multiple copies of some of the minority classes. It does not cause any increase in the variety of training samples. Oversampling using SMOTE on the other hand not only increases the size of the training data set but also increases the variety.  It is able to equalise and balance the class distribution by replicating existing minority class examples. SMOTE synthesizes new minority instances between existing minority instances. It generates the virtual training records by carrying out linear interpolation for the minority class. It does so by considering the k-nearest neighbors from a sample in the original dataset to create new artificial training examples. For example, in the case of our dataset, if there are two examples of fraud cases near each other, SMOTE creates a third artificial sample in the middle of the original two.</p>
+<p>Therefore, the approach is effective as the newly created synthetic examples from the minority class are not identical but very similar to the existing data from the minority class.</p>
+<h5 id="under-sampling---near-miss">Under Sampling - Near Miss</h5>
+<p>We will be using Near Miss-1 as a technique to conduct under-sampling. The algorithm selects example data from the majority class that have the smallest average distance to the three closest example data from the minority class. What it does here is that by removing the middle data point, which is closest to both points, it helps to increases the spaces between two classes. As such, it is able helps to mitigate the problem of information loss, which is a common issue in under sampling. This is crucial for us since our dataset is extremely imbalanced. Thus, by utilizing near-neighbors methods in Near Miss-1, it minimizes information loss in the majority class.</p>
+<h5 id="both-under-and-oversampling---smote-and-edited-nearest-neighbors">Both (Under and oversampling) - SMOTE and Edited Nearest Neighbors</h5>
+<p>Although over-sampling minority class examples can easily balance class distributions, some other problems that are usually presented in the dataset with skewed data class distributions are not solved. Usually, class clusters are not well-defined and distinct since some of the majority class data points might invade the minority class space. The opposite is possible too, as interpolating minority class data points can expand the minority class clusters, adding artificial minority class data points too deeply into the majority class space. As such, inducing a classifier in such scenarios can eventually lead to overfitting. In order to create better well-defined class clusters, Edited Nearest Neighbors can be used on both classes as a data cleaning method. (Batista et al., 2004)</p>
+<h4 id="normalization">Normalization</h4>
+<p>We used MinMaxScaler to normalize the data to increase the performance of the training of models. MinMaxScaler subtracts the minimum value of the feature for each value in a feature, and then divides by the range. The range is the difference between the original maximum and the original minimum. Each feature is normalized to between 0 and 1.</p>
+<pre><code>X_std = (X - X.min(axis=0)) / (X.max(axis=0) - X.min(axis=0))
+X_scaled = X_std * (max - min) + min
+</code></pre>
+<p>MinMaxScaler preserves the shape of the original distribution. However, an additional thing to take note is that after normalizing each of the column for each training data from each sample type, it is important to keep the original scaler, since the scaler is required to transform the X_test data later on, or it is important to scale the X_test data with the same scaler that is fitted using the training data, since the scaler has not seen the test data, it is possible that the test data contains values &lt; 0 or &gt; 1.</p>
+<h3 id="model-optimization">Model Optimization</h3>
+<p>After we have obtained the suitable training dataset, we use it to train the various models that we have mentioned in the Methodology section. Other than the wide variety of various models that we use, in hopes of using different models to capture different distinct features of the data given, we also explored ways to optimize the performance of each model through various ways. Below are some of the techniques that we have used in some of the models:</p>
+<ol>
+<li>Recursive Feature Elimination through cross-validation</li>
+<li>Ensemble Techniques</li>
+<li>Prevent overfitting</li>
+<li>Grid Search</li>
+</ol>
+<h4 id="feature-selection-through-cross-validation">Feature Selection through cross-validation</h4>
+<p>As mentioned earlier in <strong>t-SNE scatter plot of PCA values</strong> and <strong>Feature Correlation Matrix</strong>, there might be high correlation between some of the PCA values. Thus, it is important for us to select the optimal number of features (concept of Occam’s razor), rather than including all the features for model predicting. This can be done so, by searching for a smaller subset of current features by removing one feature at a time, and check if the performance of the model on the validation has improved. This step is repeated until the optimal number of features is achieved. This allows features to be ranked according to their importance, and the least important features are discarded, and only the remaining features are used to fit the model.</p>
+<p>This is in fact a crucial step in various model building because different models tend to capture the importance of different variables differently. Some models tend to place more importance on features that suit their model design better, and additional features might in fact act as noise and lower the overall performance of the model.</p>
+<p>In additionally, feature selection is essential in a practical aspect. Firstly, by having a smaller set of features, it allows the collection of sufficient data needed to run the model, thereby allowing the model to be simpler in practical sense. Secondly, the feature selection inherently tells us the ranking of the importance of each feature, which can provide some insights on possible reason on why certain prediction is made in a certain way. For example, if Hour is kept as the set of optimal features, then it might provide some form of hint to credit-card companies that fraudulent transactions tend to have some preference on the time of the day when they commit their fraudulent act. Furthermore, if credit-card companies are able to identify or narrow down these periods of time within the day, they can increase their monitoring during these periods to identify and stop these fraudulent acts.</p>
+<pre><code>  Model Name: LoR
+  Selected Features: ['V3', 'V4', 'V10', 'V11', 'V12', 'V13', 'V14', 'V16', 'Hour']
+  Model Name: CART
+  Selected Features: ['Time', 'V14', 'Hour']
+</code></pre>
+<h4 id="ensemble-techniques">Ensemble Techniques</h4>
+<p><strong>Boosting</strong> and <strong>bagging</strong> are used to help optimize the building of decision trees. Random Forest, which is a collection of multiple decision trees, heavily utilizes these ensemble techniques to increase the ability to generalize unseen data, which is especially crucial for highly imbalanced data. However, one of the many criticisms of boosting and bagging is that it tends to take a long time for the model to be built due to the large number of iterations required.</p>
+<p>Therefore, we have also used <strong>Extreme Gradient Boosting Machine</strong> as one of our models, since it implements parallel preprocessing at node level, and each tree that is built while trying to correct the errors of the previous trees.</p>
+<h4 id="ensemble-techniques-1">Ensemble Techniques</h4>
+<p>Boosting and bagging are used to help optimize the building of decision trees. Random Forest, which is a collection of multiple decision trees, heavily utilizes these ensemble techniques to increase the ability to generalize unseen data, which is especially crucial for highly imbalanced data. However, one of the many criticisms of boosting and bagging is that it tends to take a long time for the model to be built due to the large number of iterations required.</p>
+<p>Therefore, we have also used Extreme Gradient Boosting Machine as one of our models, since it implements parallel preprocessing at node level, and each tree that is built while trying to correct the errors of the previous trees.</p>
+<h4 id="prevent-overfitting">Prevent overfitting</h4>
+<p>Other than the various techniques that are used to optimize the performance of our model, we also looked at areas to ensure that our models are not overfitted to the training data. This is critical since the dataset is highly imbalanced, there is high likelihood that new fraudulent transactions are likely to be unseen records. Thus, it is important for us to prevent overfitting as much as possible. This is done through use of regularization techniques on both <strong>XGBM</strong>, and <strong>Neural Network</strong>. Other methods also include early stopping when the validation loss does not improve for 3 epochs.</p>
+<p><figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2023.png"/> 
+</figure>
+ <figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2024.png"/> 
+</figure>
+</p>
+<h4 id="grid-search">Grid Search</h4>
+<p>We also tried to optimize the performance of our model further through running Grid Search on the hyperparameters of various models, in order to obtain the most optimal hyperparameters. This is especially crucial when it comes down to more black-box model such as the Neural Network, as the optimal value for the hyperparameters can only be found out through testing and not based on any historical guidelines or industry standards, since different hyperparameters perform differently for different dataset. For example, batch size of 32 optimized the training speed the best, while achieving similar performance scoring.</p>
+<p><figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2025.png"/> 
+</figure>
+ <figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2026.png"/> 
+</figure>
+</p>
+<h2 id="experiment-results-and-analysis">Experiment Results and Analysis</h2>
+<h3 id="performance-metrics-used">Performance Metrics used</h3>
+<p><strong>Why accuracy is not used</strong></p>
+<p>The <strong>objective</strong> of this project is to be able to detect fraudulent transactions. Since our dataset is highly imbalanced, plain accuracy is not a good way of measuring the performance of the model. This is because if the algorithm always predicts the output as non-fraudulent, it will still achieve an accuracy higher than 99%. This will hence defeat our purpose of training a model to be able to detect fraudulent transactions and labelling them as such. Thus, in this scenario, it is more viable to examine the context of the issue, which is to detect fraud and allow actions to be done against those fraud transactions.</p>
+<p><strong>True positive rate (TPR), True negative rate (TNR)</strong></p>
+<p>If we take classifying a transaction as fraudulent as positive, TPR (as known as sensitivity or recall) would be measuring the number of cases who have been correctly identified as fraud over the number of transactions that are fraudulent. Whereas TNR (as known as specificity) would be measuring the number of cases who have been correctly identified as non-fraud over the number of transactions that are non-fraudulent.</p>
+<p>How TPR and TNR are calculated:</p>
+<figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2027.png"/> 
+</figure>
+
+<p>TP: True Positive, FN: False Negative</p>
+<figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2028.png"/> 
+</figure>
+
+<p>TN: True Negative, FP: False Positive</p>
+<p><strong>Which is more important to detect: FP or FN?</strong></p>
+<p>In this case, the financial impact and consequences due to unable to detect and identify a fraudulent transaction (FN) is more serious as compared to the consequences of having a false alarm (FP), leading to more investigations, but bring inconvenience to the customers. Thus, we would like to minimise False Negative Rate relatively more than False Positive Rate. However, in the most ideal situation, if we can minimize both errors, it will be the best.</p>
+<p><strong>Use of Recall and Precision instead to measure performance of model in uneven datasets</strong></p>
+<p><figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2029.png"/> 
+</figure>
+   <figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2030.png"/> 
+</figure>
+  <br>
+Precision, however, is not affected by a large number of negative samples (non-fraud data). This is because it measures the number of true positives out of the samples predicted as positives (TP+FP). Due to its way of measurement, precision is more focused on the positive class than in the negative class, it measures the probability of correct detection of positive values, while FPR and TPR (ROC metrics) measure the ability to distinguish between the classes.</p>
+<p>Recall on the other hand, measures how accurate a model can determine a fraudulent transaction is fraudulent. Since both performance metrices are important indicators specific to our skewed dataset and our objective, F1 Score which considers both metrics can be also used as a performance metric.</p>
+<p><strong>Further evaluation of performance metrics used</strong></p>
+<p><figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2031.png"/> 
+</figure>
+<figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2032.png"/> 
+</figure>
+</p>
+<h3 id="performance-metrics-preference--precision-recall-auc">Performance Metrics Preference – Precision-Recall AUC</h3>
+<p>For both ROC-AUC and Precision-Recall AUC, both are equally well in determining the model’s ability in distinguishing the classes. However, the main difference between ROC curves and PR curves is that PR curve is a better form of measurement for high imbalanced datasets. As sensitivity and specificity, which make up the ROC curves, are probabilities conditioned on the true class label, whereas precision is a probability conditioned on one’s estimate of the class label.</p>
+<figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2033.png"/> 
+</figure>
+
+<p>The differences between AUC-ROC and AUC-PR become drastic when the dataset is highly imbalanced, like the one used for both figures (20 hits and 1980 misses). Curve I shows 10 of the 20 hits are in the top ten ranks while the remaining 10 are distributed evenly throughout the remaining ranks. Whereas Curve II shows 20 hits spread evenly in the first 500 ranks (out of 2000 ranks). In the ROC Curves, the preference for Curve I or Curve II is hard to determine, whereas in Precision-Recall Curves, the preference is distinct and clear-cut.</p>
+<h3 id="result-and-analysis">Result and Analysis</h3>
+<p><strong>Recall-Precision AUC for All Models</strong></p>
+<figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2034.png"/> 
+</figure>
+
+<p>According to the table, Random Forest performs the best out of all the models. One possible reason is why Random Forest performs best is its ability to capture minority class better through data space partitioning without sacrificing much of the majority class classification accuracy. This can be supported by observations of other models achieving high AUROC scores, but low AUPRC scores. Specifically, oversampling does the best amongst the different sampling methods. This is probably because having more data is generally better as there is more data to train the given model.</p>
+<p><figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2035.png"/> 
+</figure>
+ <figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2036.png"/> 
+</figure>
+ <figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2037.png"/> 
+</figure>
+</p>
+<h2 id="discussion-of-pros-and-cons-of-ml-algorithms-used">Discussion of Pros and Cons of ML algorithms used</h2>
+<p><figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2038.png"/> 
+</figure>
+ <figure>
+    <img src="https://yjlim1999.github.io/Portfolio/images/project-4/Picture%2039.png"/> 
+</figure>
+</p>
+<h2 id="conclusion">Conclusion</h2>
+<h3 id="summary-of-project">Summary of project</h3>
+<p>Random Forest performed extremely well in classifying credit card activities into the classes Regular Transaction and Fraudulent Transaction, with various datasets, with Area Under Recall-Precision Curve score of 0.846, using the oversampled Amount dataset.</p>
+<p>From the confusion metrics of the random forest model (shown in section 5.3), there are low numbers not only for both false positives (non-fraud identified as fraud) but also false negatives (fraud identified as non-fraud) whereas in other models, even though it has low numbers for false negatives, it does a bad job at identifying non-fraudulent transactions, having a high number of false positives. Having both low numbers of false positives and false negatives is important especially in the real-world context to retain and attract customers. This will be further discussed in detail in section 7.2 below.</p>
+<p>Even though the machine learning algorithms for detecting credit card fraud are highly efficient, there is still room for improvement. Despite the random forest model is an all-rounder in its ability to minimize both false negatives and false positives, its true positive rate is very similar to other models, having a true positive rate of only 80 percent. Since identifying false negatives is more important than false positives, this is a possible room for improvement.</p>
+<h3 id="implications">Implications</h3>
+<h4 id="real-world-applications">Real-world applications</h4>
+<p>The end goal for this project is to create a machine learning model that accepts the inputs of the various data that could be collected and predict whether the credit card transaction is a fraud or not a fraud. This model can be either used during the point of transaction, in which the authorities or the credit card company can prevent the transaction from continuing, or after the transaction have been done, where credit card company can investigate the possible fraudulent transactions further.</p>
+<p>Therefore, the real-world application focuses on two areas, one is real-time prevention of such fraudulent transaction, and the other is the criminal investigation of suspicious transactions and providing any corrective actions should there be a fraudulent transaction.</p>
+<h4 id="practicality-of-various-models">Practicality of various models</h4>
+<h5 id="simple-models-vs-complex-black-box-models">Simple models vs complex (black-box) models</h5>
+<p>While it is normally important to quantify the performance of each trained models by comparing the scoring metrics of each model, it is also essential to understand how a corporation can use the model in operation. In real-life application, corporations would tend to want more information, and details on what can they do to prevent or curb fraudulent transactions, rather than relying on just a model to spew out the final probability.</p>
+<p>This is a commonplace in machine learning where complex black-box models like neural network tends to perform better in scoring metrics but does not provide much information on how they arrive down to the predicted value. Whereas for simpler models like logistic regression and decision trees, these models provide feature importance value for each of the variable, indicating what is likely the impact of each feature that led to calculation of the final predicted value. This in turn provides additional insights to companies on what could be done better to help fight fraudulent crimes. For instances, if a model shows that (large) Amount is a relatively much important feature in predicting the fraudulent transactions, then companies can start to conduct more monitoring or in fact enact additional 2-factor authentication when the transaction amount exceeds a certain threshold.</p>
+<p>Although there are also new algorithms such as Local Interpretable Model-agnostic Explanations (Ribeiro, Singh, &amp; Guestrin, 2016) that can be used on black-box model and it attempts to explain the impact of each variable through extrapolation of the local neighborhood data for each predicted point, these algorithms are unable to provide the global impact of the change in each variable. Thus, it makes it harder to provide companies a general strategy that they can use to help change the behaviors of the users.</p>
+<h5 id="training-times-of-models">Training times of models</h5>
+<p>Another concern for companies that want to utilize this type of model prediction to help in their operation is that the training time of the model needs to be sufficient quick enough. Due to the spontaneous and rapid nature of fraudulent acts, fraudsters tend to change up their fraud methods relatively quick to prevent themselves from being caught.</p>
+<p>Thus, it is critical that models need to be trained on streaming data and deployed as soon as possible (within a few days) to match up the rapid changing patterns of fraudsters. Thus, a lot of practical concerns need to be considered such as the training time of each type of model.</p>
+<p>While the problem of long training time of more complex models such as Neural Network or XGBM has been mitigated with better algorithms and the use of more powerful GPUs. Ensemble modeling or model stacking, which often can provide a slightly higher score in performance, is not preferred in this scenario as it takes too much time to train multiple models in an ensemble for a slight increase in performance. Thus, this is also why the models we used are limited to single model type only, rather than an ensemble of various models.</p>
+<h3 id="directions-for-improvements">Directions for improvements</h3>
+<h4 id="further-improvements">Further Improvements</h4>
+<p>To improve our performance of our model further, below are some possible improvements:</p>
+<ol>
+<li>If we have more context information of the PCA values, we can do more feature engineering for inter-variable relationships and could possibly do profile clustering on the type of customers to understand their transactions patterns.</li>
+<li>It would be better if we have more data. Credit-card companies would have billions of transactions on a day-to-day basis. If one has a large dataset, it would be less on optimization for better prediction performance, but more on speed performance for rapid deployment.</li>
+<li>Time-series data (based on each customer) might be preferable in this case, as owner of credit cards tend to have the same spending pattern within the same span of time. It would make more sense to learn about their spending habits, rather than having a “snapshot” data of a random customer and the transaction data at the point of transaction.</li>
+</ol>
+<h4 id="other-extensions-for-fraud-detection">Other extensions for Fraud Detection</h4>
+<p>Currently, our problem statement is to predict whether a credit-card transaction is fraud or non-fraud, and the <strong>context</strong> given to us is that it is vital for credit card companies to recognize fraudulent credit card transactions so that customers are not charged for the items that they did not purchase. The type of fraud in this case, would be focused on misuse of credit card, or credit card numbers to make those “card-not-present&quot; transactions.</p>
+<p>Other than using standard numeric, or categorical data (which is the dataset that we are given in this context), we can also look at <strong>graph-based data</strong> to help detect fraudulent transaction and preferably prevent them. In fact, <strong>Anomaly Prevention using Advanced Transaction Exploration (APATE)</strong> is an algorithm model that takes in graph inputs, in attempt to map past purchasing patterns and customer patterns into meaningful features to use it to predict the fraudulent probability of the new, incoming transaction (Roy et al., 2018).</p>
+<p>This is the end of the long summary of the project. If you happened to read this, thank you for taking your time to read this summary. This project took a lot more time than my other projects but I was able to finish it with help from my 3 other teammates. Despite this, I learnt a lot and hope you have gain some insights specific to credit card fraud detection:)</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://yjlim1999.github.io/Portfolio" >
+    &copy;  Yun Jie 2021 
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+<a href="https://www.github.com/yjlim1999" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="https://yjlim1999.github.io/Portfolio/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>
